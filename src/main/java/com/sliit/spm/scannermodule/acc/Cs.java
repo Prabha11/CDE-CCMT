@@ -20,9 +20,12 @@ public class Cs {
 
    private static Pattern numeric = Pattern.compile("\\d+");
    private static Pattern textInsideDoubleQuoted = Pattern.compile("\"(.*?)\"");
-   private static List<String> keywordsOne = Arrays.asList(PropertyReader.getInstance().getProperty("cs.one").split(","));
-   private static List<String> keywordsTwo = Arrays.asList(PropertyReader.getInstance().getProperty("cs.two").split(","));
-   private static List<String> keywordsTwoStartWith = Arrays.asList(PropertyReader.getInstance().getProperty("cs.two.start.with").split(","));
+   private static List<String> keywordsOne =
+           Arrays.asList(PropertyReader.getInstance().getProperty("cs.one").split(","));
+   private static List<String> keywordsTwo =
+           Arrays.asList(PropertyReader.getInstance().getProperty("cs.two").split(","));
+   private static List<String> keywordsTwoStartWith =
+           Arrays.asList(PropertyReader.getInstance().getProperty("cs.two.start.with").split(","));
 
    private Cs() {
    }
@@ -89,7 +92,9 @@ public class Cs {
         find methods and variables
          */
          for (String keyword : methodsAndVariables) {
-            List<String> lineDataList = Arrays.asList(line.replaceAll("[\\(\\+\\-\\)\\:\\;\\[\\]\\.\\{\\}\\=]", " ").split(" "));
+            List<String> lineDataList = Arrays
+                    .asList(line.replaceAll("[\\(\\+\\-\\)\\:\\;\\[\\]\\.\\{\\}\\=]", " ")
+                            .split(" "));
             for (String lineData : lineDataList) {
                if (lineData.equalsIgnoreCase(keyword.toLowerCase())) {
                   cs += 1;
@@ -103,7 +108,9 @@ public class Cs {
          remove.add("println");
          for (String val : remove) {
             if (!line.isEmpty() && line.toLowerCase().indexOf(val) != -1) {
-               List<String> lineDataList = Arrays.asList(line.replaceAll("[\\(\\+\\-\\)\\:\\;\\[\\]\\.]", " ").split(" "));
+               List<String> lineDataList = Arrays
+                       .asList(line.replaceAll("[\\(\\+\\-\\)\\:\\;\\[\\]\\.]", " ")
+                               .split(" "));
                for (String lineData : lineDataList) {
                   if (lineData.equals(val)) {
                      cs -= 1;
