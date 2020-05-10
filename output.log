@@ -32,3 +32,91 @@
 2020-05-10 01:08:57.653  INFO 9736 --- [main] com.sliit.spm.ACC.AccApplicationTests    : Started AccApplicationTests in 123.054 seconds (JVM running for 155.514)
 2020-05-10 01:08:59.697  INFO 9736 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
 2020-05-10 01:08:59.705  INFO 9736 --- [SpringContextShutdownHook] org.mongodb.driver.connection            : Closed connection [connectionId{localValue:2, serverValue:4}] to localhost:27017 because the pool has been closed.
+2020-05-10 10:19:53.493  INFO 6580 --- [main] com.sliit.cde.CDECCMTApplication         : Starting CDECCMTApplication on DESKTOP-6IHH9AS with PID 6580 (started by PRABHA in E:\Projects\FreeLance\Code complexity measuring tool\algorithemic-complexity-calculator-master\ACC)
+2020-05-10 10:19:53.521  INFO 6580 --- [main] com.sliit.cde.CDECCMTApplication         : No active profile set, falling back to default profiles: default
+2020-05-10 10:20:05.900  INFO 6580 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-05-10 10:20:06.538  INFO 6580 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 556ms. Found 2 repository interfaces.
+2020-05-10 10:20:20.178  INFO 6580 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8090 (http)
+2020-05-10 10:20:20.259  INFO 6580 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-05-10 10:20:20.259  INFO 6580 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.27]
+2020-05-10 10:20:20.312  INFO 6580 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.16] of the APR based Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+2020-05-10 10:20:20.313  INFO 6580 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.16] using APR version [1.6.3].
+2020-05-10 10:20:20.314  INFO 6580 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2020-05-10 10:20:20.315  INFO 6580 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2020-05-10 10:20:22.061  INFO 6580 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.0.2m  2 Nov 2017]
+2020-05-10 10:20:23.513  INFO 6580 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-05-10 10:20:23.513  INFO 6580 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 29612 ms
+2020-05-10 10:20:31.354  INFO 6580 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2020-05-10 10:20:33.223  INFO 6580 --- [cluster-ClusterId{value='5eb788170edfc422314377bd', description='null'}-localhost:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:7}] to localhost:27017
+2020-05-10 10:20:33.324  INFO 6580 --- [cluster-ClusterId{value='5eb788170edfc422314377bd', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 6, 3]}, minWireVersion=0, maxWireVersion=6, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=98264747}
+2020-05-10 10:20:34.495  WARN 6580 --- [main] o.s.data.convert.CustomConversions       : Registering converter from class java.time.LocalDateTime to class java.time.Instant as reading converter although it doesn't convert from a store-supported type! You might wanna check you annotation setup at the converter implementation.
+2020-05-10 10:20:34.496  WARN 6580 --- [main] o.s.data.convert.CustomConversions       : Registering converter from class java.time.Instant to class java.time.LocalDateTime as reading converter although it doesn't convert from a store-supported type! You might wanna check you annotation setup at the converter implementation.
+2020-05-10 10:20:35.695  WARN 6580 --- [main] o.s.data.convert.CustomConversions       : Registering converter from class java.time.LocalDateTime to class java.time.Instant as reading converter although it doesn't convert from a store-supported type! You might wanna check you annotation setup at the converter implementation.
+2020-05-10 10:20:35.695  WARN 6580 --- [main] o.s.data.convert.CustomConversions       : Registering converter from class java.time.Instant to class java.time.LocalDateTime as reading converter although it doesn't convert from a store-supported type! You might wanna check you annotation setup at the converter implementation.
+2020-05-10 10:20:36.151  WARN 6580 --- [main] .m.c.i.MongoPersistentEntityIndexCreator : Automatic index creation will be disabled by default as of Spring Data MongoDB 3.x.
+	Please use 'MongoMappingContext#setAutoIndexCreation(boolean)' or override 'MongoConfigurationSupport#autoIndexCreation()' to be explicit.
+	However, we recommend setting up indices manually in an application ready block. You may use index derivation there as well.
+
+	> -----------------------------------------------------------------------------------------
+	> @EventListener(ApplicationReadyEvent.class)
+	> public void initIndicesAfterStartup() {
+	>
+	>     IndexOperations indexOps = mongoTemplate.indexOps(DomainType.class);
+	>
+	>     IndexResolver resolver = new MongoPersistentEntityIndexResolver(mongoMappingContext);
+	>     resolver.resolveIndexFor(DomainType.class).forEach(indexOps::ensureIndex);
+	> }
+	> -----------------------------------------------------------------------------------------
+
+2020-05-10 10:20:36.820  INFO 6580 --- [main] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:2, serverValue:8}] to localhost:27017
+2020-05-10 10:20:41.261  INFO 6580 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-10 10:20:41.771  INFO 6580 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-05-10 10:20:41.861  INFO 6580 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-05-10 10:20:41.873  INFO 6580 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-05-10 10:20:42.559  INFO 6580 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8090 (http) with context path ''
+2020-05-10 10:20:42.618  INFO 6580 --- [main] com.sliit.cde.CDECCMTApplication         : Started CDECCMTApplication in 53.503 seconds (JVM running for 58.668)
+2020-05-10 10:20:43.419  INFO 6580 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-05-10 10:20:43.449  INFO 6580 --- [SpringContextShutdownHook] org.mongodb.driver.connection            : Closed connection [connectionId{localValue:2, serverValue:8}] to localhost:27017 because the pool has been closed.
+2020-05-10 10:21:22.009  INFO 13704 --- [main] com.sliit.cde.CDECCMTApplication         : Starting CDECCMTApplication on DESKTOP-6IHH9AS with PID 13704 (started by PRABHA in E:\Projects\FreeLance\Code complexity measuring tool\algorithemic-complexity-calculator-master\ACC)
+2020-05-10 10:21:22.013  INFO 13704 --- [main] com.sliit.cde.CDECCMTApplication         : No active profile set, falling back to default profiles: default
+2020-05-10 10:21:23.430  INFO 13704 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-05-10 10:21:23.502  INFO 13704 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 66ms. Found 2 repository interfaces.
+2020-05-10 10:21:24.207  INFO 13704 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8090 (http)
+2020-05-10 10:21:24.216  INFO 13704 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-05-10 10:21:24.216  INFO 13704 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.27]
+2020-05-10 10:21:24.218  INFO 13704 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.16] of the APR based Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+2020-05-10 10:21:24.218  INFO 13704 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.16] using APR version [1.6.3].
+2020-05-10 10:21:24.219  INFO 13704 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2020-05-10 10:21:24.219  INFO 13704 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2020-05-10 10:21:25.427  INFO 13704 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.0.2m  2 Nov 2017]
+2020-05-10 10:21:25.669  INFO 13704 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-05-10 10:21:25.670  INFO 13704 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3574 ms
+2020-05-10 10:21:26.020  INFO 13704 --- [main] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2020-05-10 10:21:26.079  INFO 13704 --- [cluster-ClusterId{value='5eb7884efc956a4a94239382', description='null'}-localhost:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:9}] to localhost:27017
+2020-05-10 10:21:26.084  INFO 13704 --- [cluster-ClusterId{value='5eb7884efc956a4a94239382', description='null'}-localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, version=ServerVersion{versionList=[3, 6, 3]}, minWireVersion=0, maxWireVersion=6, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=2509654}
+2020-05-10 10:21:26.131  WARN 13704 --- [main] o.s.data.convert.CustomConversions       : Registering converter from class java.time.LocalDateTime to class java.time.Instant as reading converter although it doesn't convert from a store-supported type! You might wanna check you annotation setup at the converter implementation.
+2020-05-10 10:21:26.132  WARN 13704 --- [main] o.s.data.convert.CustomConversions       : Registering converter from class java.time.Instant to class java.time.LocalDateTime as reading converter although it doesn't convert from a store-supported type! You might wanna check you annotation setup at the converter implementation.
+2020-05-10 10:21:26.290  WARN 13704 --- [main] o.s.data.convert.CustomConversions       : Registering converter from class java.time.LocalDateTime to class java.time.Instant as reading converter although it doesn't convert from a store-supported type! You might wanna check you annotation setup at the converter implementation.
+2020-05-10 10:21:26.290  WARN 13704 --- [main] o.s.data.convert.CustomConversions       : Registering converter from class java.time.Instant to class java.time.LocalDateTime as reading converter although it doesn't convert from a store-supported type! You might wanna check you annotation setup at the converter implementation.
+2020-05-10 10:21:26.363  WARN 13704 --- [main] .m.c.i.MongoPersistentEntityIndexCreator : Automatic index creation will be disabled by default as of Spring Data MongoDB 3.x.
+	Please use 'MongoMappingContext#setAutoIndexCreation(boolean)' or override 'MongoConfigurationSupport#autoIndexCreation()' to be explicit.
+	However, we recommend setting up indices manually in an application ready block. You may use index derivation there as well.
+
+	> -----------------------------------------------------------------------------------------
+	> @EventListener(ApplicationReadyEvent.class)
+	> public void initIndicesAfterStartup() {
+	>
+	>     IndexOperations indexOps = mongoTemplate.indexOps(DomainType.class);
+	>
+	>     IndexResolver resolver = new MongoPersistentEntityIndexResolver(mongoMappingContext);
+	>     resolver.resolveIndexFor(DomainType.class).forEach(indexOps::ensureIndex);
+	> }
+	> -----------------------------------------------------------------------------------------
+
+2020-05-10 10:21:26.395  INFO 13704 --- [main] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:2, serverValue:10}] to localhost:27017
+2020-05-10 10:21:27.365  INFO 13704 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-10 10:21:27.660  INFO 13704 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-05-10 10:21:27.689  INFO 13704 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-05-10 10:21:27.705  INFO 13704 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-05-10 10:21:28.041  INFO 13704 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8090 (http) with context path ''
+2020-05-10 10:21:28.046  INFO 13704 --- [main] com.sliit.cde.CDECCMTApplication         : Started CDECCMTApplication in 6.561 seconds (JVM running for 7.984)
