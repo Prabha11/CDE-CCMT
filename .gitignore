@@ -29,3 +29,6 @@ build/
 
 ### VS Code ###
 .vscode/
+/example.log.1
+/output.log.2020-05-08.0.gz
+/output.log.2020-05-09.0.gz
