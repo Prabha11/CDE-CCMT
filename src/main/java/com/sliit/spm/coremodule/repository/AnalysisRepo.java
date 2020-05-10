@@ -10,10 +10,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * @author tenusha
- *
- */
 @Repository
 public interface AnalysisRepo extends MongoRepository<Analysis, String> {
     Optional<Analysis> findByProjectKey(String projectKey);

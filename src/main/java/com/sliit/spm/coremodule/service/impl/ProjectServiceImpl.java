@@ -16,10 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * @author it16166752
- *
- */
 @Service
 public class ProjectServiceImpl implements ProjectService {
     @Autowired

@@ -12,10 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
-/**
- * @author it16166752
- *
- */
 @CrossOrigin(origins = "*")
 @RestController
 public class ProjectController {

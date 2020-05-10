@@ -10,10 +10,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * @author Vimukthi Rajapaksha
- * @date Jul 30, 2019
- */
 public class Ctc {
 
 	private static final List<String> ccsKeywords = Arrays.asList("if(", "catch(", "if (", "catch (");

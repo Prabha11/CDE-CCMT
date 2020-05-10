@@ -8,10 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import com.sliit.spm.coremodule.model.Project;
 
-/**
- * @author it16166752
- *
- */
 @Repository
 public interface ProjectRepo extends MongoRepository<Project, String> {
 
