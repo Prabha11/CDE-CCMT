@@ -1,12 +1,21 @@
 package com.sliit.cde.coremodule.model;
 
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name = "project_file")
+@EntityListeners(AuditingEntityListener.class)
 public class ProjectFile {
-
-    String relativePath;
-    List<Line> linesData;
-    int cp;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    private String relativePath;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Line> linesData;
+    private int cp;
 
     public void setRelativePath(String relativePath) {
         this.relativePath = relativePath;
@@ -30,6 +39,14 @@ public class ProjectFile {
 
     public void setCp(int cp) {
         this.cp = cp;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     @Override

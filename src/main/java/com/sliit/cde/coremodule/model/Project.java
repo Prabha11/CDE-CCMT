@@ -1,18 +1,31 @@
 package com.sliit.cde.coremodule.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name = "project")
+@EntityListeners(AuditingEntityListener.class)
 public class Project {
    @Id
-   @Indexed
-   String projectKey;
-   String sourcePath;
-   String language;
-   List<ProjectFile> files;
-   int cp;
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
+   private long id;
+   private String projectKey;
+   private String sourcePath;
+   private String language;
+   @OneToMany(cascade = CascadeType.ALL)
+   private List<ProjectFile> files;
+   private int cp;
+
+   public long getId() {
+      return id;
+   }
+
+   public void setId(long id) {
+      this.id = id;
+   }
 
    public List<ProjectFile> getFiles() {
       return files;

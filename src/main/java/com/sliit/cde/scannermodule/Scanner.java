@@ -1,7 +1,7 @@
 package com.sliit.cde.scannermodule;
 
 import com.sliit.cde.scannermodule.acc.FileHandler;
-import com.sliit.cde.scannermodule.model.Project;
+import com.sliit.cde.coremodule.model.Project;
 import org.apache.log4j.Logger;
 
 public class Scanner {

@@ -2,7 +2,8 @@ package com.sliit.cde.scannermodule.utils;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.sliit.cde.scannermodule.model.Project;
+import com.sliit.cde.coremodule.model.Project;
+import com.sliit.cde.coremodule.model.ProjectFile;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
@@ -25,6 +26,10 @@ public class Client {
 
     public static void sendAnalysisData(Project project) {
         try {
+
+            System.out.println("\n\n\n\n ID TEST \n\n\n\n");
+            System.out.println(project.getFiles().get(0).getId());
+            ProjectFile pf = new ProjectFile();
 
             LOGGER.debug("Submitting analysis data to the server...");
 

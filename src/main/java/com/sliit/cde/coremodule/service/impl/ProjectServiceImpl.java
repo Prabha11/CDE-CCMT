@@ -38,7 +38,7 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Override
     public Optional<Project> getByKey(String projectKey) {
-        return projectRepo.findById(projectKey);
+        return projectRepo.findByKey(projectKey);
     }
 
     @Override

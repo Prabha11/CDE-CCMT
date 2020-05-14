@@ -11,7 +11,7 @@ public class CDECCMTApplication {
 
    public static void main(String[] args) {
       SpringApplication.run(CDECCMTApplication.class, args);
-      BootstrapService.openApp();
+//      BootstrapService.openApp();
    }
 
 }

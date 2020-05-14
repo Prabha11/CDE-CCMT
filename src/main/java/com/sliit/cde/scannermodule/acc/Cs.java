@@ -1,6 +1,6 @@
 package com.sliit.cde.scannermodule.acc;
 
-import com.sliit.cde.scannermodule.model.Line;
+import com.sliit.cde.coremodule.model.Line;
 import com.sliit.cde.scannermodule.utils.PropertyReader;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;

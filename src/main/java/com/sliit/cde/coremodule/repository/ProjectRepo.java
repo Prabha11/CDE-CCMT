@@ -1,14 +1,15 @@
-/**
- * 
- */
 package com.sliit.cde.coremodule.repository;
 
 import com.sliit.cde.coremodule.model.Project;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public interface ProjectRepo extends MongoRepository<Project, String> {
+import java.util.Optional;
 
-	//public List<Project> findByOrderByCreatedTimeAsc();
+@Repository
+public interface ProjectRepo extends JpaRepository<Project, Long> {
+    @Query(value = "SELECT p FROM Project p WHERE p.projectKey = :projectKey")
+    Optional<Project> findByKey(@Param("projectKey") String projectKey);
 }

@@ -2,9 +2,9 @@ package com.sliit.cde.scannermodule.acc;
 
 import com.sliit.cde.scannermodule.utils.MethodAndVariableFinder;
 import com.sliit.cde.scannermodule.utils.RecursiveMethodLineNumberFinder;
-import com.sliit.cde.scannermodule.model.Line;
-import com.sliit.cde.scannermodule.model.Project;
-import com.sliit.cde.scannermodule.model.ProjectFile;
+import com.sliit.cde.coremodule.model.Line;
+import com.sliit.cde.coremodule.model.Project;
+import com.sliit.cde.coremodule.model.ProjectFile;
 import com.sliit.cde.scannermodule.model.Stack;
 import com.sliit.cde.scannermodule.utils.Client;
 import org.apache.commons.io.FilenameUtils;

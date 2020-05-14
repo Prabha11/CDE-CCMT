@@ -1,16 +1,25 @@
 package com.sliit.cde.coremodule.model;
 
-public class Line {
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-    int lineNo;
-    String data;
-    int cs;
-    int ctc;
-    int cnc;
-    int ci;
-    int cps;
-    int tw;
-    int cr;
+import javax.persistence.*;
+
+@Entity
+@Table(name = "line")
+@EntityListeners(AuditingEntityListener.class)
+public class Line {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    private int lineNo;
+    private String data;
+    private int cs;
+    private int ctc;
+    private int cnc;
+    private int ci;
+    private int cps;
+    private int tw;
+    private int cr;
 
     public String getData() {
         return data;
@@ -82,6 +91,14 @@ public class Line {
 
     public void setCr(int cr) {
         this.cr = cr;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     @Override

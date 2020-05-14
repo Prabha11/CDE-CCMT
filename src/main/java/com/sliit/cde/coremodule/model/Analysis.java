@@ -1,25 +1,26 @@
 package com.sliit.cde.coremodule.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-@Document(collection = "analysis")
+import javax.persistence.*;
+
+@Entity
+@Table(name = "analysis")
+@EntityListeners(AuditingEntityListener.class)
 public class Analysis {
-
     @Id
-    private String id;
-    @Indexed
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     private long createdTime;
-    @Indexed
-    String projectKey;
-    Project project;
+    private String projectKey;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Project project;
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 

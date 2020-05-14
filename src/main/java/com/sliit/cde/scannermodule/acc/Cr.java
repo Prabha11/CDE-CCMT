@@ -1,6 +1,6 @@
 package com.sliit.cde.scannermodule.acc;
 
-import com.sliit.cde.scannermodule.model.Line;
+import com.sliit.cde.coremodule.model.Line;
 
 import java.util.HashMap;
 import java.util.Map;
