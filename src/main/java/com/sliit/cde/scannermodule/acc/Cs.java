@@ -12,7 +12,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * calculate Cs of a line
+ * calculate Complexity due to size of a line
  */
 public class Cs {
 

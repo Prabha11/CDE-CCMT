@@ -21,7 +21,11 @@ public class Cnc {
     private static Pattern switchPattern = Pattern.compile("(switch\\s*\\()(\\w+)(\\)\\s*\\{)");
     private static Pattern elsePattern = Pattern.compile("(\\}*\\s*else\\s*\\{)");
 
-
+    /**
+     * Calculates Cnc value of line
+     * @param lineObj
+     * @param line
+     */
     public static void calcCnc(Line lineObj, String line) {
 
         int cnc = 0;
