@@ -1,5 +1,6 @@
 package com.sliit.cde.scannermodule.acc.service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -87,7 +88,14 @@ public abstract class StringPatternService {
 
     public boolean isVariable(String codeLine) {
         boolean rejectedWordIncluded = this.isSubString(codeLine, "return");
-        return !rejectedWordIncluded;
+        boolean isMethodCall = isSubString(codeLine, "[(](.*?)[)]") && !isSubString(codeLine,"=");
+
+        if (isSubString(codeLine,"=")) {
+            String[] splitCodeLineByAssignment = codeLine.split("=");
+            return splitCodeLineByAssignment[0].trim().split("\\s+").length >= 2;
+        }
+
+        return !rejectedWordIncluded && !isMethodCall;
     }
 
     public int getNumberOpenCurlBrackets(String codeLine) {
