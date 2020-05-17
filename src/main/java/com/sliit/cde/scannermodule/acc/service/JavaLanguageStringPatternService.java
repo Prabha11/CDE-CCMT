@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class JavaLanguageStringPatternService extends CommonStringPatternService {
+public class JavaLanguageStringPatternService extends StringPatternService {
 
     public List<String> getPrimitiveDataTypes() {
         String operatorsString = "byte,short,int,long,float,double,boolean,char";

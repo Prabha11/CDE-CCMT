@@ -4,21 +4,22 @@ import com.sliit.cde.coremodule.model.Line;
 import com.sliit.cde.coremodule.model.MethodComplexity;
 import com.sliit.cde.scannermodule.acc.enums.Scope;
 import com.sliit.cde.scannermodule.acc.service.JavaLanguageStringPatternService;
+import com.sliit.cde.scannermodule.acc.service.StringPatternService;
 
 class MethodComplexityAnalyzer {
     private Scope scope = Scope.GLOBAL;
-    private JavaLanguageStringPatternService javaLanguageStringPatternService = new JavaLanguageStringPatternService();
+    private StringPatternService StringPatternService = new JavaLanguageStringPatternService();
     private int scopeLevel = 0;
 
     void analyze(Line lineObject, String codeLine, String language) {
         MethodComplexity methodComplexity = new MethodComplexity();
-        String cleanedCodeLine = javaLanguageStringPatternService.cleanStringLiterals(codeLine);
+        String cleanedCodeLine = StringPatternService.cleanStringLiterals(codeLine);
         System.out.println(codeLine);
-        if (scopeLevel == 1 && javaLanguageStringPatternService.isMethod(cleanedCodeLine)) {
-            String retType = javaLanguageStringPatternService.getReturnVariableTypeOfMethod(cleanedCodeLine);
+        if (scopeLevel == 1 && StringPatternService.isMethod(cleanedCodeLine)) {
+            String retType = StringPatternService.getReturnVariableTypeOfMethod(cleanedCodeLine);
 
-            boolean isPrimitiveReturnType = javaLanguageStringPatternService.isPrimitiveDataType(retType);
-            boolean isVoidReturnType = javaLanguageStringPatternService.isVoidDataType(retType);
+            boolean isPrimitiveReturnType = StringPatternService.isPrimitiveDataType(retType);
+            boolean isVoidReturnType = StringPatternService.isVoidDataType(retType);
 
             if (isPrimitiveReturnType) {
                 methodComplexity.setReturnType(1);
@@ -28,22 +29,22 @@ class MethodComplexityAnalyzer {
                 methodComplexity.setReturnType(-1);
             }
 
-            String parametersString = javaLanguageStringPatternService.getCodeInsideBrackets(cleanedCodeLine);
+            String parametersString = StringPatternService.getCodeInsideBrackets(cleanedCodeLine);
 
             if (parametersString != null) {
 
                 methodComplexity
                         .setNumberOfPrimitiveDataTypeParameters(
-                                javaLanguageStringPatternService.getNumberOfPrimitiveParameters(parametersString));
+                                StringPatternService.getNumberOfPrimitiveParameters(parametersString));
 
                 methodComplexity
                         .setNumberOfCompositeDataTypeParameters(
-                                javaLanguageStringPatternService.getNumberOfCompositeParameters(parametersString));
+                                StringPatternService.getNumberOfCompositeParameters(parametersString));
             }
         }
 
-        scopeLevel += javaLanguageStringPatternService.getNumberOpenCurlBrackets(cleanedCodeLine);
-        scopeLevel -= javaLanguageStringPatternService.getNumberCloseCurlBrackets(cleanedCodeLine);
+        scopeLevel += StringPatternService.getNumberOpenCurlBrackets(cleanedCodeLine);
+        scopeLevel -= StringPatternService.getNumberCloseCurlBrackets(cleanedCodeLine);
 
         lineObject.setMethodComplexity(methodComplexity);
     }

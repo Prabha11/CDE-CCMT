@@ -4,10 +4,10 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public abstract class CommonStringPatternService {
+public abstract class StringPatternService {
 
     abstract protected List<String> getPrimitiveDataTypes();
-    abstract protected String getReturnVariableTypeOfMethod(String codeLine);
+    public abstract String getReturnVariableTypeOfMethod(String codeLine);
     abstract public boolean isPrimitiveVariable(String codeLine);
     abstract public boolean isPrimitiveParameter(String parameter);
 
