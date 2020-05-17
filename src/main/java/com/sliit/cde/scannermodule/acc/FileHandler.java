@@ -1,5 +1,6 @@
 package com.sliit.cde.scannermodule.acc;
 
+import com.sliit.cde.scannermodule.acc.enums.Language;
 import com.sliit.cde.scannermodule.utils.MethodAndVariableFinder;
 import com.sliit.cde.scannermodule.utils.RecursiveMethodLineNumberFinder;
 import com.sliit.cde.coremodule.model.Line;
@@ -85,8 +86,14 @@ public class FileHandler {
                 List<String> methodsAndVariables = MethodAndVariableFinder.getMethodAndVariables(file);
                 HashMap<Integer, Integer> recursiveLineNumbers = RecursiveMethodLineNumberFinder.getRecursiveMethodLineNumbers(file);
 
-                MethodComplexityAnalyzer methodComplexityAnalyzer = new MethodComplexityAnalyzer();
-                VariableComplexityAnalyzer variableComplexityAnalyzer = new VariableComplexityAnalyzer();
+                Language projectLanguage = Language.JAVA;
+                if (project.getLanguage().equals("Java")) {
+                    projectLanguage = Language.JAVA;
+                } else {
+                    projectLanguage = Language.CPP;
+                }
+                MethodComplexityAnalyzer methodComplexityAnalyzer = new MethodComplexityAnalyzer(projectLanguage);
+                VariableComplexityAnalyzer variableComplexityAnalyzer = new VariableComplexityAnalyzer(projectLanguage);
 
                 for (String line; (line = lnr.readLine()) != null; ) {
                     Line lineObj = new Line();
@@ -117,8 +124,8 @@ public class FileHandler {
                         Ctc.calcCtc(lineObj, line);
                         Cnc.calcCnc(lineObj, line);
                         Cr.calcCr(lineObj, recursiveLineNumbers);
-                        methodComplexityAnalyzer.analyze(lineObj, line, project.getLanguage());
-                        variableComplexityAnalyzer.analyze(lineObj, line, project.getLanguage());
+                        methodComplexityAnalyzer.analyze(lineObj, line);
+                        variableComplexityAnalyzer.analyze(lineObj, line);
                     }
 
                     if (line.trim().endsWith("*/")) {

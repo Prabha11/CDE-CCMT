@@ -131,3 +131,71 @@
 2020-05-17 12:41:14.912  INFO 12280 --- [http-nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2020-05-17 12:41:14.913  INFO 12280 --- [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2020-05-17 12:41:14.928  INFO 12280 --- [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 15 ms
+2020-05-17 12:48:33.799  INFO 13796 --- [main] com.sliit.cde.CDECCMTApplication         : Starting CDECCMTApplication on DESKTOP-6IHH9AS with PID 13796 (started by PRABHA in E:\Projects\FreeLance\Code complexity measuring tool\algorithemic-complexity-calculator-master\ACC)
+2020-05-17 12:48:33.808  INFO 13796 --- [main] com.sliit.cde.CDECCMTApplication         : No active profile set, falling back to default profiles: default
+2020-05-17 12:48:35.579  INFO 13796 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-05-17 12:48:35.704  INFO 13796 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 113ms. Found 2 repository interfaces.
+2020-05-17 12:48:36.473  INFO 13796 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-17 12:48:37.008  INFO 13796 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8090 (http)
+2020-05-17 12:48:37.017  INFO 13796 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-05-17 12:48:37.018  INFO 13796 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.27]
+2020-05-17 12:48:37.019  INFO 13796 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.16] of the APR based Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+2020-05-17 12:48:37.020  INFO 13796 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.16] using APR version [1.6.3].
+2020-05-17 12:48:37.020  INFO 13796 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2020-05-17 12:48:37.020  INFO 13796 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2020-05-17 12:48:38.130  INFO 13796 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.0.2m  2 Nov 2017]
+2020-05-17 12:48:38.367  INFO 13796 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-05-17 12:48:38.367  INFO 13796 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4457 ms
+2020-05-17 12:48:38.439  INFO 13796 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-05-17 12:48:38.615  INFO 13796 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-05-17 12:48:38.624  INFO 13796 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:C:\Users\PRABHA\AppData\Roaming\cde\data\database'
+2020-05-17 12:48:38.859  INFO 13796 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-05-17 12:48:38.937  INFO 13796 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.6.Final}
+2020-05-17 12:48:39.104  INFO 13796 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-05-17 12:48:39.259  INFO 13796 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2020-05-17 12:48:40.361  INFO 13796 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-05-17 12:48:40.372  INFO 13796 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-05-17 12:48:41.648  WARN 13796 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-05-17 12:48:42.437  INFO 13796 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-17 12:48:42.802  INFO 13796 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-05-17 12:48:42.818  INFO 13796 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-05-17 12:48:42.831  INFO 13796 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-05-17 12:48:43.177  INFO 13796 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8090 (http) with context path ''
+2020-05-17 12:48:43.182  INFO 13796 --- [main] com.sliit.cde.CDECCMTApplication         : Started CDECCMTApplication in 10.035 seconds (JVM running for 11.865)
+2020-05-17 12:49:12.271  INFO 13796 --- [http-nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-05-17 12:49:12.272  INFO 13796 --- [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-05-17 12:49:12.289  INFO 13796 --- [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 17 ms
+2020-05-17 13:03:21.645  INFO 8908 --- [main] com.sliit.cde.CDECCMTApplication         : Starting CDECCMTApplication on DESKTOP-6IHH9AS with PID 8908 (started by PRABHA in E:\Projects\FreeLance\Code complexity measuring tool\algorithemic-complexity-calculator-master\ACC)
+2020-05-17 13:03:21.649  INFO 8908 --- [main] com.sliit.cde.CDECCMTApplication         : No active profile set, falling back to default profiles: default
+2020-05-17 13:03:23.863  INFO 8908 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-05-17 13:03:23.945  INFO 8908 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 73ms. Found 2 repository interfaces.
+2020-05-17 13:03:24.311  INFO 8908 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-05-17 13:03:24.782  INFO 8908 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8090 (http)
+2020-05-17 13:03:24.795  INFO 8908 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-05-17 13:03:24.795  INFO 8908 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.27]
+2020-05-17 13:03:24.797  INFO 8908 --- [main] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.16] of the APR based Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+2020-05-17 13:03:24.799  INFO 8908 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.16] using APR version [1.6.3].
+2020-05-17 13:03:24.801  INFO 8908 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2020-05-17 13:03:24.801  INFO 8908 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2020-05-17 13:03:25.934  INFO 8908 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.0.2m  2 Nov 2017]
+2020-05-17 13:03:26.854  INFO 8908 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-05-17 13:03:26.854  INFO 8908 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 5090 ms
+2020-05-17 13:03:26.946  INFO 8908 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-05-17 13:03:27.133  INFO 8908 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-05-17 13:03:27.142  INFO 8908 --- [main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:C:\Users\PRABHA\AppData\Roaming\cde\data\database'
+2020-05-17 13:03:27.305  INFO 8908 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-05-17 13:03:27.387  INFO 8908 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.4.6.Final}
+2020-05-17 13:03:27.532  INFO 8908 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-05-17 13:03:27.707  INFO 8908 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2020-05-17 13:03:29.139  INFO 8908 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-05-17 13:03:29.153  INFO 8908 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-05-17 13:03:30.274  WARN 8908 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-05-17 13:03:30.678  INFO 8908 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-05-17 13:03:31.004  INFO 8908 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-05-17 13:03:31.018  INFO 8908 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-05-17 13:03:31.029  INFO 8908 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-05-17 13:03:31.372  INFO 8908 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8090 (http) with context path ''
+2020-05-17 13:03:31.376  INFO 8908 --- [main] com.sliit.cde.CDECCMTApplication         : Started CDECCMTApplication in 10.378 seconds (JVM running for 11.937)
+2020-05-17 13:04:05.306  INFO 8908 --- [http-nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-05-17 13:04:05.308  INFO 8908 --- [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-05-17 13:04:05.332  INFO 8908 --- [http-nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 24 ms

@@ -2,7 +2,9 @@ package com.sliit.cde.scannermodule.acc;
 
 import com.sliit.cde.coremodule.model.Line;
 import com.sliit.cde.coremodule.model.MethodComplexity;
+import com.sliit.cde.scannermodule.acc.enums.Language;
 import com.sliit.cde.scannermodule.acc.enums.Scope;
+import com.sliit.cde.scannermodule.acc.service.CPPLanguageStringPatternService;
 import com.sliit.cde.scannermodule.acc.service.JavaLanguageStringPatternService;
 import com.sliit.cde.scannermodule.acc.service.StringPatternService;
 
@@ -11,7 +13,14 @@ class MethodComplexityAnalyzer {
     private StringPatternService StringPatternService = new JavaLanguageStringPatternService();
     private int scopeLevel = 0;
 
-    void analyze(Line lineObject, String codeLine, String language) {
+    public MethodComplexityAnalyzer(Language language) {
+        if (language == Language.JAVA)
+            StringPatternService = new JavaLanguageStringPatternService();
+        else if (language == Language.CPP)
+            StringPatternService = new CPPLanguageStringPatternService();
+    }
+
+    void analyze(Line lineObject, String codeLine) {
         MethodComplexity methodComplexity = new MethodComplexity();
         String cleanedCodeLine = StringPatternService.cleanStringLiterals(codeLine);
         System.out.println(codeLine);
