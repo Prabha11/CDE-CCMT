@@ -4,31 +4,32 @@ import com.sliit.cde.coremodule.model.Line;
 import com.sliit.cde.coremodule.model.MethodComplexity;
 import com.sliit.cde.scannermodule.acc.enums.Language;
 import com.sliit.cde.scannermodule.acc.enums.Scope;
-import com.sliit.cde.scannermodule.acc.service.CPPLanguageStringPatternService;
-import com.sliit.cde.scannermodule.acc.service.JavaLanguageStringPatternService;
-import com.sliit.cde.scannermodule.acc.service.StringPatternService;
+import com.sliit.cde.scannermodule.acc.service.CPPLanguageMethodAndVariableStringPatternService;
+import com.sliit.cde.scannermodule.acc.service.JavaLanguageMethodAndVariableStringPatternService;
+import com.sliit.cde.scannermodule.acc.service.MethodAndVariableStringPatternService;
 
 class MethodComplexityAnalyzer {
     private Scope scope = Scope.GLOBAL;
-    private StringPatternService StringPatternService = new JavaLanguageStringPatternService();
+    private MethodAndVariableStringPatternService MethodAndVariableStringPatternService
+            = new JavaLanguageMethodAndVariableStringPatternService();
     private int scopeLevel = 0;
 
     public MethodComplexityAnalyzer(Language language) {
         if (language == Language.JAVA)
-            StringPatternService = new JavaLanguageStringPatternService();
+            MethodAndVariableStringPatternService = new JavaLanguageMethodAndVariableStringPatternService();
         else if (language == Language.CPP)
-            StringPatternService = new CPPLanguageStringPatternService();
+            MethodAndVariableStringPatternService = new CPPLanguageMethodAndVariableStringPatternService();
     }
 
     void analyze(Line lineObject, String codeLine) {
         MethodComplexity methodComplexity = new MethodComplexity();
-        String cleanedCodeLine = StringPatternService.cleanStringLiterals(codeLine);
+        String cleanedCodeLine = MethodAndVariableStringPatternService.cleanStringLiterals(codeLine);
         System.out.println(codeLine);
-        if (scopeLevel == 1 && StringPatternService.isMethod(cleanedCodeLine)) {
-            String retType = StringPatternService.getReturnVariableTypeOfMethod(cleanedCodeLine);
+        if (scopeLevel == 1 && MethodAndVariableStringPatternService.isMethod(cleanedCodeLine)) {
+            String retType = MethodAndVariableStringPatternService.getReturnVariableTypeOfMethod(cleanedCodeLine);
 
-            boolean isPrimitiveReturnType = StringPatternService.isPrimitiveDataType(retType);
-            boolean isVoidReturnType = StringPatternService.isVoidDataType(retType);
+            boolean isPrimitiveReturnType = MethodAndVariableStringPatternService.isPrimitiveDataType(retType);
+            boolean isVoidReturnType = MethodAndVariableStringPatternService.isVoidDataType(retType);
 
             if (isPrimitiveReturnType) {
                 methodComplexity.setReturnType(1);
@@ -38,22 +39,22 @@ class MethodComplexityAnalyzer {
                 methodComplexity.setReturnType(-1);
             }
 
-            String parametersString = StringPatternService.getCodeInsideBrackets(cleanedCodeLine);
+            String parametersString = MethodAndVariableStringPatternService.getCodeInsideBrackets(cleanedCodeLine);
 
             if (parametersString != null) {
 
                 methodComplexity
                         .setNumberOfPrimitiveDataTypeParameters(
-                                StringPatternService.getNumberOfPrimitiveParameters(parametersString));
+                                MethodAndVariableStringPatternService.getNumberOfPrimitiveParameters(parametersString));
 
                 methodComplexity
                         .setNumberOfCompositeDataTypeParameters(
-                                StringPatternService.getNumberOfCompositeParameters(parametersString));
+                                MethodAndVariableStringPatternService.getNumberOfCompositeParameters(parametersString));
             }
         }
 
-        scopeLevel += StringPatternService.getNumberOpenCurlBrackets(cleanedCodeLine);
-        scopeLevel -= StringPatternService.getNumberCloseCurlBrackets(cleanedCodeLine);
+        scopeLevel += MethodAndVariableStringPatternService.getNumberOpenCurlBrackets(cleanedCodeLine);
+        scopeLevel -= MethodAndVariableStringPatternService.getNumberCloseCurlBrackets(cleanedCodeLine);
 
         lineObject.setMethodComplexity(methodComplexity);
     }

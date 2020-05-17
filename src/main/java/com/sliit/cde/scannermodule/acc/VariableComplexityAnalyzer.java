@@ -4,28 +4,29 @@ import com.sliit.cde.coremodule.model.Line;
 import com.sliit.cde.coremodule.model.VariableComplexity;
 import com.sliit.cde.scannermodule.acc.enums.Language;
 import com.sliit.cde.scannermodule.acc.enums.Scope;
-import com.sliit.cde.scannermodule.acc.service.CPPLanguageStringPatternService;
-import com.sliit.cde.scannermodule.acc.service.JavaLanguageStringPatternService;
-import com.sliit.cde.scannermodule.acc.service.StringPatternService;
+import com.sliit.cde.scannermodule.acc.service.CPPLanguageMethodAndVariableStringPatternService;
+import com.sliit.cde.scannermodule.acc.service.JavaLanguageMethodAndVariableStringPatternService;
+import com.sliit.cde.scannermodule.acc.service.MethodAndVariableStringPatternService;
 
 class VariableComplexityAnalyzer {
     private Scope scope = Scope.GLOBAL;
-    private StringPatternService stringPatternService = new JavaLanguageStringPatternService();
+    private MethodAndVariableStringPatternService methodAndVariableStringPatternService
+            = new JavaLanguageMethodAndVariableStringPatternService();
     private int scopeLevel = 0;
 
     public VariableComplexityAnalyzer(Language language) {
         if (language == Language.JAVA)
-            stringPatternService = new JavaLanguageStringPatternService();
+            methodAndVariableStringPatternService = new JavaLanguageMethodAndVariableStringPatternService();
         else if (language == Language.CPP)
-            stringPatternService = new CPPLanguageStringPatternService();
+            methodAndVariableStringPatternService = new CPPLanguageMethodAndVariableStringPatternService();
     }
 
     void analyze(Line lineObject, String codeLine) {
         VariableComplexity variableComplexity = new VariableComplexity();
-        String cleanedCodeLine = stringPatternService.cleanStringLiterals(codeLine);
+        String cleanedCodeLine = methodAndVariableStringPatternService.cleanStringLiterals(codeLine);
 
-        scopeLevel += stringPatternService.getNumberOpenCurlBrackets(cleanedCodeLine);
-        scopeLevel -= stringPatternService.getNumberCloseCurlBrackets(cleanedCodeLine);
+        scopeLevel += methodAndVariableStringPatternService.getNumberOpenCurlBrackets(cleanedCodeLine);
+        scopeLevel -= methodAndVariableStringPatternService.getNumberCloseCurlBrackets(cleanedCodeLine);
 
         if (scopeLevel == 1) {
             variableComplexity.setScopeGlobal(1);
@@ -35,11 +36,11 @@ class VariableComplexityAnalyzer {
             variableComplexity.setScopeLocal(1);
         }
 
-        if (stringPatternService.isVariable(cleanedCodeLine) &&
-                stringPatternService.isPrimitiveVariable(cleanedCodeLine)) {
+        if (methodAndVariableStringPatternService.isVariable(cleanedCodeLine) &&
+                methodAndVariableStringPatternService.isPrimitiveVariable(cleanedCodeLine)) {
             variableComplexity.setNumberOfPrimitiveDataTypeVariables(1);
-        } else if (stringPatternService.isVariable(cleanedCodeLine) &&
-                stringPatternService.isCompositeVariable(cleanedCodeLine)) {
+        } else if (methodAndVariableStringPatternService.isVariable(cleanedCodeLine) &&
+                methodAndVariableStringPatternService.isCompositeVariable(cleanedCodeLine)) {
             variableComplexity.setNumberOfCompositeDataTypeVariables(1);
         }
 

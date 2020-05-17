@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public abstract class StringPatternService {
+public abstract class MethodAndVariableStringPatternService {
 
     abstract protected List<String> getPrimitiveDataTypes();
     public abstract String getReturnVariableTypeOfMethod(String codeLine);

@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class CPPLanguageStringPatternService extends StringPatternService {
+public class CPPLanguageMethodAndVariableStringPatternService extends MethodAndVariableStringPatternService {
 
     public List<String> getPrimitiveDataTypes() {
         String operatorsString = "int,float,double,boolean,char";
