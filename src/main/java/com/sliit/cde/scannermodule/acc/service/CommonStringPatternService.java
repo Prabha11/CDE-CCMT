@@ -1,6 +1,5 @@
 package com.sliit.cde.scannermodule.acc.service;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -21,7 +20,7 @@ public abstract class CommonStringPatternService {
         return codeLine;
     }
 
-    private String removeWord(String target, String word) {
+    protected String removeWord(String target, String word) {
         Pattern wordPattern = Pattern.compile(word);
         Matcher wordMatcher = wordPattern.matcher(target);
         while (wordMatcher.find())
@@ -29,13 +28,13 @@ public abstract class CommonStringPatternService {
         return target;
     }
 
-    private boolean isSubString(String target, String word) {
+    protected boolean isSubString(String target, String word) {
         Pattern wordPattern = Pattern.compile(word);
         Matcher wordMatcher = wordPattern.matcher(target);
         return wordMatcher.find();
     }
 
-    private int getNumberOfSubstrings(String target, String word) {
+    protected int getNumberOfSubstrings(String target, String word) {
         int number = 0;
         Pattern wordPattern = Pattern.compile(word);
         Matcher wordMatcher = wordPattern.matcher(target);
