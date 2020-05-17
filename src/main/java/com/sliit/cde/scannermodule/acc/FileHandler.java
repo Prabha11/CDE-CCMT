@@ -85,6 +85,9 @@ public class FileHandler {
                 List<String> methodsAndVariables = MethodAndVariableFinder.getMethodAndVariables(file);
                 HashMap<Integer, Integer> recursiveLineNumbers = RecursiveMethodLineNumberFinder.getRecursiveMethodLineNumbers(file);
 
+                MethodComplexityAnalyzer methodComplexityAnalyzer = new MethodComplexityAnalyzer();
+                VariableComplexityAnalyzer variableComplexityAnalyzer = new VariableComplexityAnalyzer();
+
                 for (String line; (line = lnr.readLine()) != null; ) {
                     Line lineObj = new Line();
                     lineObj.setLineNo(lnr.getLineNumber());
@@ -114,6 +117,8 @@ public class FileHandler {
                         Ctc.calcCtc(lineObj, line);
                         Cnc.calcCnc(lineObj, line);
                         Cr.calcCr(lineObj, recursiveLineNumbers);
+                        methodComplexityAnalyzer.analyze(lineObj, line, project.getLanguage());
+                        variableComplexityAnalyzer.analyze(lineObj, line, project.getLanguage());
                     }
 
                     if (line.trim().endsWith("*/")) {

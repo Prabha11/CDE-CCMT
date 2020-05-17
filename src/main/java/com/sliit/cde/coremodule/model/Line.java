@@ -20,6 +20,10 @@ public class Line {
     private int cps;
     private int tw;
     private int cr;
+    @OneToOne(cascade = CascadeType.ALL)
+    private MethodComplexity methodComplexity;
+    @OneToOne(cascade = CascadeType.ALL)
+    private VariableComplexity variableComplexity;
 
     public String getData() {
         return data;
@@ -99,6 +103,22 @@ public class Line {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public MethodComplexity getMethodComplexity() {
+        return methodComplexity;
+    }
+
+    public void setMethodComplexity(MethodComplexity methodComplexity) {
+        this.methodComplexity = methodComplexity;
+    }
+
+    public VariableComplexity getVariableComplexity() {
+        return variableComplexity;
+    }
+
+    public void setVariableComplexity(VariableComplexity variableComplexity) {
+        this.variableComplexity = variableComplexity;
     }
 
     @Override
