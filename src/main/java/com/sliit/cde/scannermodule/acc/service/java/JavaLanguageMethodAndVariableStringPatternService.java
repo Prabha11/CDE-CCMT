@@ -1,14 +1,16 @@
-package com.sliit.cde.scannermodule.acc.service;
+package com.sliit.cde.scannermodule.acc.service.java;
+
+import com.sliit.cde.scannermodule.acc.service.MethodAndVariableStringPatternService;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class CPPLanguageMethodAndVariableStringPatternService extends MethodAndVariableStringPatternService {
+public class JavaLanguageMethodAndVariableStringPatternService extends MethodAndVariableStringPatternService {
 
     public List<String> getPrimitiveDataTypes() {
-        String operatorsString = "int,float,double,bool,char";
+        String operatorsString = "byte,short,int,long,float,double,boolean,char";
         return Arrays.asList(operatorsString.split(","));
     }
 
@@ -30,7 +32,7 @@ public class CPPLanguageMethodAndVariableStringPatternService extends MethodAndV
 
     public boolean isPrimitiveVariable(String codeLine) {
         Pattern textInsideDoubleQuoted = Pattern.compile(
-                "(\\s+|^)(int|float|double|bool|char)(\\s+)(.*?);");
+                "(\\s+|^)(byte|short|int|long|float|double|boolean|char)(\\s+)(.*?);");
         Matcher textInsideDoubleQuotedMatcher = textInsideDoubleQuoted.matcher(codeLine);
         boolean r = textInsideDoubleQuotedMatcher.find();
         return r;
@@ -41,7 +43,7 @@ public class CPPLanguageMethodAndVariableStringPatternService extends MethodAndV
         Matcher squareBracketMatcher = squareBracket.matcher(parameter);
         boolean isArray = squareBracketMatcher.find();
 
-        boolean isPrimitive = isSubString(parameter, "int|float|double|boolean|char");
+        boolean isPrimitive = isSubString(parameter, "byte|short|int|long|float|double|boolean|char");
 
         return !isArray && isPrimitive;
     }

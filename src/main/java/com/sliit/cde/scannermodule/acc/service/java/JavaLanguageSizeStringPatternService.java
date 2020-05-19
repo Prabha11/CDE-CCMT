@@ -1,4 +1,6 @@
-package com.sliit.cde.scannermodule.acc.service;
+package com.sliit.cde.scannermodule.acc.service.java;
+
+import com.sliit.cde.scannermodule.acc.service.SizeStringPatternService;
 
 public class JavaLanguageSizeStringPatternService extends SizeStringPatternService {
     @Override

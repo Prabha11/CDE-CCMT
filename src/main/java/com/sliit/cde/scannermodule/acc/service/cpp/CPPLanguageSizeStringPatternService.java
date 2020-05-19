@@ -1,4 +1,6 @@
-package com.sliit.cde.scannermodule.acc.service;
+package com.sliit.cde.scannermodule.acc.service.cpp;
+
+import com.sliit.cde.scannermodule.acc.service.SizeStringPatternService;
 
 public class CPPLanguageSizeStringPatternService extends SizeStringPatternService {
     @Override

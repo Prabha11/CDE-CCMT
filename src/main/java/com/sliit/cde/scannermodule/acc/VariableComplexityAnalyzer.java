@@ -4,8 +4,8 @@ import com.sliit.cde.coremodule.model.Line;
 import com.sliit.cde.coremodule.model.VariableComplexity;
 import com.sliit.cde.scannermodule.acc.enums.Language;
 import com.sliit.cde.scannermodule.acc.enums.Scope;
-import com.sliit.cde.scannermodule.acc.service.CPPLanguageMethodAndVariableStringPatternService;
-import com.sliit.cde.scannermodule.acc.service.JavaLanguageMethodAndVariableStringPatternService;
+import com.sliit.cde.scannermodule.acc.service.cpp.CPPLanguageMethodAndVariableStringPatternService;
+import com.sliit.cde.scannermodule.acc.service.java.JavaLanguageMethodAndVariableStringPatternService;
 import com.sliit.cde.scannermodule.acc.service.MethodAndVariableStringPatternService;
 
 class VariableComplexityAnalyzer {

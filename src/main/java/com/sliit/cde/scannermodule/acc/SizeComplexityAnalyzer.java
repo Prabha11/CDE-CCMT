@@ -3,8 +3,8 @@ package com.sliit.cde.scannermodule.acc;
 import com.sliit.cde.coremodule.model.Line;
 import com.sliit.cde.coremodule.model.SizeComplexity;
 import com.sliit.cde.scannermodule.acc.enums.Language;
-import com.sliit.cde.scannermodule.acc.service.CPPLanguageSizeStringPatternService;
-import com.sliit.cde.scannermodule.acc.service.JavaLanguageSizeStringPatternService;
+import com.sliit.cde.scannermodule.acc.service.cpp.CPPLanguageSizeStringPatternService;
+import com.sliit.cde.scannermodule.acc.service.java.JavaLanguageSizeStringPatternService;
 import com.sliit.cde.scannermodule.acc.service.SizeStringPatternService;
 
 public class SizeComplexityAnalyzer {
