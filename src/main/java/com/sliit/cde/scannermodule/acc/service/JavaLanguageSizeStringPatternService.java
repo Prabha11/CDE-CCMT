@@ -13,9 +13,4 @@ public class JavaLanguageSizeStringPatternService extends SizeStringPatternServi
     protected String getOrSeparatedIdentifierPrefixes() {
         return "class|for|case";
     }
-
-    public static void main(String[] args) {
-        JavaLanguageSizeStringPatternService k = new JavaLanguageSizeStringPatternService();
-        System.out.println(k.getNumberOfOperators("import com.rafsan.inventory.entity.Invoice;"));
-    }
 }
