@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 public class CPPLanguageMethodAndVariableStringPatternService extends MethodAndVariableStringPatternService {
 
     public List<String> getPrimitiveDataTypes() {
-        String operatorsString = "int,float,double,boolean,char";
+        String operatorsString = "int,float,double,bool,char";
         return Arrays.asList(operatorsString.split(","));
     }
 
@@ -30,7 +30,7 @@ public class CPPLanguageMethodAndVariableStringPatternService extends MethodAndV
 
     public boolean isPrimitiveVariable(String codeLine) {
         Pattern textInsideDoubleQuoted = Pattern.compile(
-                "(\\s+|^)(int|float|double|boolean|char)(\\s+)(.*?);");
+                "(\\s+|^)(int|float|double|bool|char)(\\s+)(.*?);");
         Matcher textInsideDoubleQuotedMatcher = textInsideDoubleQuoted.matcher(codeLine);
         boolean r = textInsideDoubleQuotedMatcher.find();
         return r;

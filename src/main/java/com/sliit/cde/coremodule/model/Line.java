@@ -24,6 +24,8 @@ public class Line {
     private MethodComplexity methodComplexity;
     @OneToOne(cascade = CascadeType.ALL)
     private VariableComplexity variableComplexity;
+    @OneToOne(cascade = CascadeType.ALL)
+    private SizeComplexity sizeComplexity;
 
     public String getData() {
         return data;
@@ -119,6 +121,14 @@ public class Line {
 
     public void setVariableComplexity(VariableComplexity variableComplexity) {
         this.variableComplexity = variableComplexity;
+    }
+
+    public SizeComplexity getSizeComplexity() {
+        return sizeComplexity;
+    }
+
+    public void setSizeComplexity(SizeComplexity sizeComplexity) {
+        this.sizeComplexity = sizeComplexity;
     }
 
     @Override

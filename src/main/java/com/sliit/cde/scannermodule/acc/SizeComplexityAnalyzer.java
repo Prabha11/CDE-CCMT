@@ -1,124 +1,35 @@
 package com.sliit.cde.scannermodule.acc;
 
 import com.sliit.cde.coremodule.model.Line;
-import com.sliit.cde.scannermodule.utils.PropertyReader;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.sliit.cde.coremodule.model.SizeComplexity;
+import com.sliit.cde.scannermodule.acc.enums.Language;
+import com.sliit.cde.scannermodule.acc.service.CPPLanguageSizeStringPatternService;
+import com.sliit.cde.scannermodule.acc.service.JavaLanguageSizeStringPatternService;
+import com.sliit.cde.scannermodule.acc.service.SizeStringPatternService;
 
 public class SizeComplexityAnalyzer {
+    private SizeStringPatternService sizeStringPatternService = new JavaLanguageSizeStringPatternService();
 
-    private static final Logger LOGGER = Logger.getLogger(Cs.class);
-
-    private static Pattern numeric = Pattern.compile("\\d+");
-    private static Pattern textInsideDoubleQuoted = Pattern.compile("\"(.*?)\"");
-    private static List<String> keywordsOne =
-            Arrays.asList(PropertyReader.getInstance().getProperty("cs.one").split(","));
-    private static List<String> keywordsTwo =
-            Arrays.asList(PropertyReader.getInstance().getProperty("cs.two").split(","));
-    private static List<String> keywordsTwoStartWith =
-            Arrays.asList(PropertyReader.getInstance().getProperty("cs.two.start.with").split(","));
-
-    private SizeComplexityAnalyzer() {
+    public SizeComplexityAnalyzer(Language language) {
+        if (language == Language.JAVA) {
+            this.sizeStringPatternService = new JavaLanguageSizeStringPatternService();
+        } else if (language == Language.CPP) {
+            this.sizeStringPatternService = new CPPLanguageSizeStringPatternService();
+        }
     }
 
-    public static void calcCs(Line lineObj, String line, List<String> methodsAndVariables) {
+    void analyze(Line lineObject, String codeLine) {
+        SizeComplexity sizeComplexity = new SizeComplexity();
 
-        int cs = 0;
+        sizeComplexity.setNumberOfStringLiterals(sizeStringPatternService.getNumberOfStringLiterals(codeLine));
 
-        line = line.trim();
-        try {
-        /*
-        find Text inside a pair of double quotes
-         */
-            Matcher q = textInsideDoubleQuoted.matcher(line);
-            while (q.find()) {
-                line = line.replace(q.group(0), "");
-                cs++;
-            }
+        String cleanedCodeLine = sizeStringPatternService.cleanStringLiterals(codeLine);
 
-        /*
-        count of occurrences with score of 1
-         */
-            for (String keyword : keywordsOne) {
-                if (!line.isEmpty() && line.toLowerCase().indexOf(keyword) != -1) {
-                    int score = StringUtils.countMatches(line.toLowerCase(), keyword);
-                    cs += score;
-                }
-            }
+        sizeComplexity.setNumberOfKeyWords(sizeStringPatternService.getNumberOfKeyWords(cleanedCodeLine));
+        sizeComplexity.setNumberOfIdentifiers(sizeStringPatternService.getNumberOfIdentifiers(cleanedCodeLine));
+        sizeComplexity.setNumberOfNumericalValues(sizeStringPatternService.getNumberOfNumericValues(cleanedCodeLine));
+        sizeComplexity.setNumberOfOperators(sizeStringPatternService.getNumberOfOperators(cleanedCodeLine));
 
-        /*
-        count of occurrences with score of 2
-         */
-            for (String keyword : keywordsTwo) {
-                if (!line.isEmpty() && line.toLowerCase().indexOf(keyword) != -1) {
-                    int score = StringUtils.countMatches(line.toLowerCase(), keyword);
-                    score *= 2;
-                    cs += score;
-                }
-            }
-
-        /*
-        count of occurrences with score of 2 and check if the string starts with the given keyword
-         */
-            for (String keyword : keywordsTwoStartWith) {
-                if (!line.isEmpty()) {
-                    List<String> words = Arrays.asList(line.split(" "));
-                    for (String word : words) {
-                        if (word.startsWith(keyword)) {
-                            cs += 2;
-                        }
-                    }
-                }
-            }
-
-        /*
-        find numeric values
-         */
-            Matcher n = numeric.matcher(line);
-            while (n.find()) {
-                cs++;
-            }
-
-        /*
-        find methods and variables
-         */
-            for (String keyword : methodsAndVariables) {
-                List<String> lineDataList = Arrays
-                        .asList(line.replaceAll("[\\(\\+\\-\\)\\:\\;\\[\\]\\.\\{\\}\\=]", " ")
-                                .split(" "));
-                for (String lineData : lineDataList) {
-                    if (lineData.equalsIgnoreCase(keyword.toLowerCase())) {
-                        cs += 1;
-                    }
-                }
-            }
-
-            // temp solution for bug
-            List<String> remove = new ArrayList<>();
-            remove.add("print");
-            remove.add("println");
-            for (String val : remove) {
-                if (!line.isEmpty() && line.toLowerCase().indexOf(val) != -1) {
-                    List<String> lineDataList = Arrays
-                            .asList(line.replaceAll("[\\(\\+\\-\\)\\:\\;\\[\\]\\.]", " ")
-                                    .split(" "));
-                    for (String lineData : lineDataList) {
-                        if (lineData.equals(val)) {
-                            cs -= 1;
-                        }
-                    }
-                }
-            }
-            lineObj.setCs(cs);
-        } catch (Exception e) {
-            String errMsg = "Error calculating Cs";
-            LOGGER.error(errMsg);
-        }
+        lineObject.setSizeComplexity(sizeComplexity);
     }
 }

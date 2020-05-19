@@ -94,6 +94,7 @@ public class FileHandler {
                 }
                 MethodComplexityAnalyzer methodComplexityAnalyzer = new MethodComplexityAnalyzer(projectLanguage);
                 VariableComplexityAnalyzer variableComplexityAnalyzer = new VariableComplexityAnalyzer(projectLanguage);
+                SizeComplexityAnalyzer sizeComplexityAnalyzer = new SizeComplexityAnalyzer(projectLanguage);
 
                 for (String line; (line = lnr.readLine()) != null; ) {
                     Line lineObj = new Line();
@@ -101,7 +102,8 @@ public class FileHandler {
                     lineObj.setData(line);
 
                     // ignore comment lines
-                    if (line.trim().startsWith("//") || line.trim().startsWith("import") || line.trim().startsWith("include")) {
+                    if (line.trim().startsWith("//") || line.trim().startsWith("import") ||
+                            line.trim().startsWith("include")) {
                         singleLineCommented = true;
                     } else {
                         singleLineCommented = false;
@@ -119,13 +121,14 @@ public class FileHandler {
 
                     //calculate complexity if line is not commented
                     if (!singleLineCommented && !multiLineCommented) {
+                        methodComplexityAnalyzer.analyze(lineObj, line);
+                        variableComplexityAnalyzer.analyze(lineObj, line);
+                        sizeComplexityAnalyzer.analyze(lineObj, line);
                         Cs.calcCs(lineObj, line, methodsAndVariables);
                         Ci.calcCi(lineObj, line, project.getLanguage());
                         Ctc.calcCtc(lineObj, line);
                         Cnc.calcCnc(lineObj, line);
                         Cr.calcCr(lineObj, recursiveLineNumbers);
-                        methodComplexityAnalyzer.analyze(lineObj, line);
-                        variableComplexityAnalyzer.analyze(lineObj, line);
                     }
 
                     if (line.trim().endsWith("*/")) {
