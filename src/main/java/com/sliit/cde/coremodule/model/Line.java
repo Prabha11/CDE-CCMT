@@ -26,6 +26,12 @@ public class Line {
     private VariableComplexity variableComplexity;
     @OneToOne(cascade = CascadeType.ALL)
     private SizeComplexity sizeComplexity;
+    @OneToOne(cascade = CascadeType.ALL)
+    private ControlStructureComplexity controlStructureComplexity;
+    @OneToOne(cascade = CascadeType.ALL)
+    private CouplingComplexity couplingComplexity;
+    @OneToOne(cascade = CascadeType.ALL)
+    private InheritanceComplexity inheritanceComplexity;
 
     public String getData() {
         return data;
@@ -129,6 +135,30 @@ public class Line {
 
     public void setSizeComplexity(SizeComplexity sizeComplexity) {
         this.sizeComplexity = sizeComplexity;
+    }
+
+    public ControlStructureComplexity getControlStructureComplexity() {
+        return controlStructureComplexity;
+    }
+
+    public void setControlStructureComplexity(ControlStructureComplexity controlStructureComplexity) {
+        this.controlStructureComplexity = controlStructureComplexity;
+    }
+
+    public CouplingComplexity getCouplingComplexity() {
+        return couplingComplexity;
+    }
+
+    public void setCouplingComplexity(CouplingComplexity couplingComplexity) {
+        this.couplingComplexity = couplingComplexity;
+    }
+
+    public InheritanceComplexity getInheritanceComplexity() {
+        return inheritanceComplexity;
+    }
+
+    public void setInheritanceComplexity(InheritanceComplexity inheritanceComplexity) {
+        this.inheritanceComplexity = inheritanceComplexity;
     }
 
     @Override
