@@ -97,6 +97,7 @@ public class FileHandler {
                 SizeComplexityAnalyzer sizeComplexityAnalyzer = new SizeComplexityAnalyzer(projectLanguage);
                 ControlStructureComplexityAnalyzer controlStructureComplexityAnalyzer =
                         new ControlStructureComplexityAnalyzer();
+                InheritanceComplexityAnalyzer inheritanceComplexityAnalyzer = new InheritanceComplexityAnalyzer();
 
                 for (String line; (line = lnr.readLine()) != null; ) {
                     Line lineObj = new Line();
@@ -127,6 +128,7 @@ public class FileHandler {
                         variableComplexityAnalyzer.analyze(lineObj, line);
                         sizeComplexityAnalyzer.analyze(lineObj, line);
                         controlStructureComplexityAnalyzer.analyze(lineObj, line);
+                        inheritanceComplexityAnalyzer.analyze(lineObj, line, projectLanguage);
                         Cs.calcCs(lineObj, line, methodsAndVariables);
                         Ci.calcCi(lineObj, line, project.getLanguage());
                         Ctc.calcCtc(lineObj, line);
