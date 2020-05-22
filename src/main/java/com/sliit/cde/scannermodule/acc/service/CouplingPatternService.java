@@ -374,20 +374,24 @@ public class CouplingPatternService {
     }
 
     static String findMethod(ArrayList<String> words, int i) {
-        String[] arr = words.get(i).split("\\[");
-        String temp = arr[0];
-        if ((temp.equals("void") || temp.equals("int") || temp.equals("float") || temp.equals("double") ||
-                temp.equals("byte") || temp.equals("short") || temp.equals("long") || temp.equals("boolean") ||
-                temp.equals("char") || temp.equals("String") || temp.startsWith("HashMap") ||
-                temp.startsWith("List")) && words.get(i + 2).startsWith("(")) {
-            return words.get(i + 1);
-        } else if ((temp.equals("void") || temp.equals("int") || temp.equals("float") || temp.equals("double") ||
-                temp.equals("byte") || temp.equals("short") || temp.equals("long") || temp.equals("boolean") ||
-                temp.equals("char") || temp.equals("String") || temp.startsWith("Array") || temp.startsWith("List"))
-                && words.get(i + 1).contains("(")) {
-            String[] arrOfStr = words.get(i + 1).split("[(]+");
-            return arrOfStr[0];
-        } else {
+        try {
+            String[] arr = words.get(i).split("\\[");
+            String temp = arr[0];
+            if ((temp.equals("void") || temp.equals("int") || temp.equals("float") || temp.equals("double") ||
+                    temp.equals("byte") || temp.equals("short") || temp.equals("long") || temp.equals("boolean") ||
+                    temp.equals("char") || temp.equals("String") || temp.startsWith("HashMap") ||
+                    temp.startsWith("List")) && words.get(i + 2).startsWith("(")) {
+                return words.get(i + 1);
+            } else if ((temp.equals("void") || temp.equals("int") || temp.equals("float") || temp.equals("double") ||
+                    temp.equals("byte") || temp.equals("short") || temp.equals("long") || temp.equals("boolean") ||
+                    temp.equals("char") || temp.equals("String") || temp.startsWith("Array") || temp.startsWith("List"))
+                    && words.get(i + 1).contains("(")) {
+                String[] arrOfStr = words.get(i + 1).split("[(]+");
+                return arrOfStr[0];
+            } else {
+                return null;
+            }
+        } catch (Exception e) {
             return null;
         }
     }

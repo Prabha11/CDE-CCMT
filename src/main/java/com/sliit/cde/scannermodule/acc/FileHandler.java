@@ -95,11 +95,14 @@ public class FileHandler {
                 } else {
                     projectLanguage = Language.CPP;
                 }
-
-                CouplingPatternService couplingPatternService = new CouplingPatternService();
-                CouplingComplexity couplingComplexity = couplingPatternService.getCouplingComplexity(file);
-                List<Method> methodsList = couplingPatternService.getMethodsList(file);
-                projectFile.setCouplingComplexity(couplingComplexity);
+                try {
+                    CouplingPatternService couplingPatternService = new CouplingPatternService();
+                    CouplingComplexity couplingComplexity = couplingPatternService.getCouplingComplexity(file);
+                    List<Method> methodsList = couplingPatternService.getMethodsList(file);
+                    projectFile.setCouplingComplexity(couplingComplexity);
+                } catch(Exception e) {
+                    e.printStackTrace();
+                }
 
                 MethodComplexityAnalyzer methodComplexityAnalyzer = new MethodComplexityAnalyzer(projectLanguage);
                 VariableComplexityAnalyzer variableComplexityAnalyzer = new VariableComplexityAnalyzer(projectLanguage);
