@@ -59,7 +59,8 @@ public class CouplingPatternService {
                             }
                         }
                     }
-                    // System.out.println(start);
+                    //start
+                    System.out.println(start);
                     start++;
                     if (start == index - 10) {
                         break;
@@ -120,7 +121,8 @@ public class CouplingPatternService {
                             }
                         }
                     }
-                    // System.out.println(start);
+                    //start
+                    System.out.println(start);
                     start++;
                     if (start == index - 10) {
                         break;
@@ -148,17 +150,21 @@ public class CouplingPatternService {
                             if (a.equals(list.get(z).getName())) {
                                 if (t.equals("regular")) {
                                     if (list.get(z).getType().equals("regular")) {
+                                        //"regular calls regular"
                                         System.out.println("regular calls regular");
                                         count = count + 2;
                                     } else {
+                                        //"regular calls recursive"
                                         System.out.println("regular calls recursive");
                                         count = count + 3;
                                     }
                                 } else if (t.equals("recursive")) {
                                     if (list.get(z).getType().equals("regular")) {
+                                        //"recursive calls regular"
                                         System.out.println("recursive calls regular");
                                         count = count + 3;
                                     } else {
+                                        //"recursive calls recursive"
                                         System.out.println("recursive calls recursive");
                                         count = count + 4;
                                     }
@@ -176,19 +182,24 @@ public class CouplingPatternService {
             int e = list.get(i).getEndIndex();
             // String n = list.get(i).name;
             String t = list.get(i).getType();
+            //s + "start"
             System.out.println(s + "start");
+            //e + "end"
             System.out.println(e + "end");
             for (int j = s; j < e; j++) {
                 for (int z = 0; z < gLength; z++) {
                     if (words.get(j).contains(globalVariables.get(z))) {
+                        //globalVariables.get(z)
                         System.out.println(globalVariables.get(z));
                         String[] temp = words.get(j).split("[)(]+");
                         for (String a : temp) {
                             if (a.equals(globalVariables.get(z))) {
                                 if (t.equals("recursive")) {
+                                    //"recursive calls global"
                                     System.out.println("recursive calls global");
                                     count = count + 1;
                                 } else {
+                                    //"regular calls global"
                                     System.out.println("regular calls global");
                                     count = count + 1;
                                 }
@@ -249,7 +260,8 @@ public class CouplingPatternService {
                             }
                         }
                     }
-                    // System.out.println(start);
+                    //start
+                    System.out.println(start);
                     start++;
                     if (start == index - 10) {
                         break;
@@ -277,12 +289,14 @@ public class CouplingPatternService {
                             if (a.equals(list.get(z).getName())) {
                                 if (t.equals("regular")) {
                                     if (list.get(z).getType().equals("regular")) {
+                                        //"regular calls regular"
                                         System.out.println("regular calls regular");
                                         couplingComplexity.setRegularMethodCallingAnotherRegularMethodInaDifferentFile(
                                                 couplingComplexity.getRegularMethodCallingAnotherRegularMethodInaDifferentFile() + 1
                                         );
                                         count = count + 2;
                                     } else {
+                                        //"regular calls recursive"
                                         System.out.println("regular calls recursive");
                                         couplingComplexity.setRegularMethodCallingARecursiveMethodInaDifferentFile(
                                                 couplingComplexity.getRegularMethodCallingARecursiveMethodInaDifferentFile() + 1
@@ -291,12 +305,14 @@ public class CouplingPatternService {
                                     }
                                 } else if (t.equals("recursive")) {
                                     if (list.get(z).getType().equals("regular")) {
+                                        //"recursive calls regular"
                                         System.out.println("recursive calls regular");
                                         couplingComplexity.setRecursiveMethodCallingARegularMethodInaDifferentFile(
                                                 couplingComplexity.getRecursiveMethodCallingARegularMethodInaDifferentFile() + 1
                                         );
                                         count = count + 3;
                                     } else {
+                                        //"recursive calls recursive"
                                         System.out.println("recursive calls recursive");
                                         couplingComplexity.setRecursiveMethodCallingAnotherRecursiveMethodInaDifferentFile(
                                                 couplingComplexity.getRecursiveMethodCallingAnotherRecursiveMethodInaDifferentFile() + 1
@@ -317,22 +333,27 @@ public class CouplingPatternService {
             int e = list.get(i).getEndIndex();
             // String n = list.get(i).name;
             String t = list.get(i).getType();
+            //s + "start"
             System.out.println(s + "start");
+            //e + "end"
             System.out.println(e + "end");
             for (int j = s; j < e; j++) {
                 for (int z = 0; z < gLength; z++) {
                     if (words.get(j).contains(globalVariables.get(z))) {
+                        //globalVariables.get(z)
                         System.out.println(globalVariables.get(z));
                         String[] temp = words.get(j).split("[)(]+");
                         for (String a : temp) {
                             if (a.equals(globalVariables.get(z))) {
                                 if (t.equals("recursive")) {
+                                    //"recursive calls global"
                                     System.out.println("recursive calls global");
                                     couplingComplexity.setRecursiveMethodReferencingAGlobalVariableInTheSameFile(
                                             couplingComplexity.getRecursiveMethodReferencingAGlobalVariableInTheSameFile() + 1
                                     );
                                     count = count + 1;
                                 } else {
+                                    //"regular calls global"
                                     System.out.println("regular calls global");
                                     couplingComplexity.setRegularMethodReferencingAGlobalVariableInTheSameFile(
                                             couplingComplexity.getRegularMethodReferencingAGlobalVariableInTheSameFile() + 1
