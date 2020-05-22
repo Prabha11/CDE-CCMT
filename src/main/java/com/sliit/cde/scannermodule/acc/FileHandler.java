@@ -1,6 +1,9 @@
 package com.sliit.cde.scannermodule.acc;
 
+import com.sliit.cde.coremodule.model.CouplingComplexity;
 import com.sliit.cde.scannermodule.acc.enums.Language;
+import com.sliit.cde.scannermodule.acc.enums.Method;
+import com.sliit.cde.scannermodule.acc.service.CouplingPatternService;
 import com.sliit.cde.scannermodule.utils.MethodAndVariableFinder;
 import com.sliit.cde.scannermodule.utils.RecursiveMethodLineNumberFinder;
 import com.sliit.cde.coremodule.model.Line;
@@ -92,12 +95,19 @@ public class FileHandler {
                 } else {
                     projectLanguage = Language.CPP;
                 }
+
+                CouplingPatternService couplingPatternService = new CouplingPatternService();
+                CouplingComplexity couplingComplexity = couplingPatternService.getCouplingComplexity(file);
+                List<Method> methodsList = couplingPatternService.getMethodsList(file);
+                projectFile.setCouplingComplexity(couplingComplexity);
+
                 MethodComplexityAnalyzer methodComplexityAnalyzer = new MethodComplexityAnalyzer(projectLanguage);
                 VariableComplexityAnalyzer variableComplexityAnalyzer = new VariableComplexityAnalyzer(projectLanguage);
                 SizeComplexityAnalyzer sizeComplexityAnalyzer = new SizeComplexityAnalyzer(projectLanguage);
                 ControlStructureComplexityAnalyzer controlStructureComplexityAnalyzer =
                         new ControlStructureComplexityAnalyzer();
                 InheritanceComplexityAnalyzer inheritanceComplexityAnalyzer = new InheritanceComplexityAnalyzer();
+                CouplingComplexityAnalyzer couplingComplexityAnalyzer = new CouplingComplexityAnalyzer();
 
                 for (String line; (line = lnr.readLine()) != null; ) {
                     Line lineObj = new Line();
@@ -129,6 +139,7 @@ public class FileHandler {
                         sizeComplexityAnalyzer.analyze(lineObj, line);
                         controlStructureComplexityAnalyzer.analyze(lineObj, line);
                         inheritanceComplexityAnalyzer.analyze(lineObj, line, projectLanguage);
+//                        couplingComplexityAnalyzer.analyze(lineObj, line, methodsList);
                         Cs.calcCs(lineObj, line, methodsAndVariables);
                         Ci.calcCi(lineObj, line, project.getLanguage());
                         Ctc.calcCtc(lineObj, line);

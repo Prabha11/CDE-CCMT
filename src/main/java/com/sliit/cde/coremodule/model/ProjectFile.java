@@ -16,6 +16,8 @@ public class ProjectFile {
     @OneToMany(cascade = CascadeType.ALL)
     private List<Line> linesData;
     private int cp;
+    @OneToOne(cascade = CascadeType.ALL)
+    private CouplingComplexity couplingComplexity;
 
     public void setRelativePath(String relativePath) {
         this.relativePath = relativePath;
@@ -47,6 +49,14 @@ public class ProjectFile {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public CouplingComplexity getCouplingComplexity() {
+        return couplingComplexity;
+    }
+
+    public void setCouplingComplexity(CouplingComplexity couplingComplexity) {
+        this.couplingComplexity = couplingComplexity;
     }
 
     @Override

@@ -5,6 +5,7 @@ package com.sliit.cde.coremodule.controller;
 
 import com.sliit.cde.coremodule.model.Project;
 import com.sliit.cde.coremodule.service.ProjectService;
+import com.sliit.cde.coremodule.service.UnzipService;
 import com.sliit.cde.scannermodule.Scanner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.*;
 public class ProjectController {
 	@Autowired
     ProjectService projectService;
+	@Autowired
+	UnzipService unzipService;
 
 	@PostMapping("/projects")
 	public ResponseEntity<?> saveProject(@RequestBody Project project) {
@@ -42,8 +45,10 @@ public class ProjectController {
 	public boolean scanProject(@RequestParam("project-key") String projectKey,
 							   @RequestParam("source-path") String sourcePath) {
 		try {
-			Scanner.startScanJob(projectKey, sourcePath);
+			String validFilePath = unzipService.getValidFilePath(sourcePath);
+			Scanner.startScanJob(projectKey, validFilePath);
 		} catch (Exception o) {
+			o.printStackTrace();
 			return false;
 		}
 		return true;
